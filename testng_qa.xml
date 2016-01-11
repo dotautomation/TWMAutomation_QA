@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<!--suite name="MultiBrowserSuite" verbose="2" parallel="tests" -->
+<suite name="MultiBrowserSuite" verbose="2" parallel="tests" thread-count="4">
+	<test name="1">
+		<parameter name="browser" value="FF">
+		</parameter>
+		<classes>
+			<class name="com.totalwine.test.aml.EmailSignup" />
+		</classes>
+	</test>
+</suite>

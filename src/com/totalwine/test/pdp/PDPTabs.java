@@ -41,7 +41,7 @@ public class PDPTabs extends Browser {
 	
 	@DataProvider(name="PDPParameters")
     public Object[][] createData() {
-    	Object[][] retObjArr=ConfigurationFunctions.getTableArray("C:\\totalwine\\TWMAutomation\\Resources\\AutomatedFlows.xls","PDP", "pdpprod");
+    	Object[][] retObjArr=ConfigurationFunctions.getTableArray(ConfigurationFunctions.resourcePath,"PDP", "pdpprod");
         return(retObjArr);
     } 
 	

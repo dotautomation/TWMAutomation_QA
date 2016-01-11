@@ -45,7 +45,7 @@ public class Search extends Browser {
 	
 	@DataProvider(name="SearchParameters")
     public Object[][] createData() {
-    	Object[][] retObjArr=ConfigurationFunctions.getTableArray("C:\\totalwine\\TWMAutomation\\Resources\\AutomatedFlows.xls","Search", "search");
+    	Object[][] retObjArr=ConfigurationFunctions.getTableArray(ConfigurationFunctions.resourcePath,"Search", "search");
         return(retObjArr);
     }
 	

@@ -166,7 +166,7 @@ public class Browser {
 	public void takeScreenShotOnFailure(ITestResult testResult) throws IOException, InterruptedException { 
 		if(testResult.getStatus() == ITestResult.FAILURE) { 
 			File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-			FileUtils.copyFile(scrFile, new File("c:\\totalwine\\FailureScreenshots\\FAIL "+testResult.getName()+"  "+ConfigurationFunctions.now()+".png")); 
+			FileUtils.copyFile(scrFile, new File("C:\\Users\\rsud\\.jenkins\\userContent\\FailureScreenshots\\QA\\FAIL "+testResult.getName()+"  "+ConfigurationFunctions.now()+".png")); 
 		}
 		driver.close();
 	}

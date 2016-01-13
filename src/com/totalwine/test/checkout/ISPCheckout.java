@@ -45,7 +45,7 @@ public class ISPCheckout extends Browser {
 
 	@DataProvider(name="CheckoutParameters")
     public Object[][] createData() {
-    	Object[][] retObjArr=ConfigurationFunctions.getTableArray(ConfigurationFunctions.resourcePath,"Checkout", "ISPcheckoutBF");
+    	Object[][] retObjArr=ConfigurationFunctions.getTableArray(ConfigurationFunctions.resourcePath,"Checkout", "ISPcheckoutQA");
         return(retObjArr);
     } 
 	

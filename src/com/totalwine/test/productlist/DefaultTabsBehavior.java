@@ -45,7 +45,7 @@ public class DefaultTabsBehavior extends Browser {
 	@DataProvider(name="PLPTabParameters")
     public Object[][] createData() {
 		Object[][] retObjArr;
-		retObjArr=ConfigurationFunctions.getTableArray(ConfigurationFunctions.resourcePath,"PLP", "plptabsBF");
+		retObjArr=ConfigurationFunctions.getTableArray(ConfigurationFunctions.resourcePath,"PLP", "plptabsQA");
         return(retObjArr);
     } 
 	

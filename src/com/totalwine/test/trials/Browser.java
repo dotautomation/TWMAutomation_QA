@@ -52,13 +52,17 @@ public class Browser {
 		if(browser.equalsIgnoreCase("FF")) {
 			ProfilesIni profile = new ProfilesIni();
 			//FirefoxProfile testProfile = profile.getProfile("WebDriver");
-			FirefoxProfile testProfile = profile.getProfile("default");
-			driver = new FirefoxDriver(testProfile);
-			testProfile.setEnableNativeEvents(true);
+			FirefoxProfile testProfile = profile.getProfile("Automation");
+			//FirefoxProfile automationProfile = new FirefoxProfile();
+			//File pathToBinary = new File("C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe");
+			//FirefoxBinary ffBinary = new FirefoxBinary(pathToBinary);
+			//testProfile.setPreference("webdriver.load.strategy", "unstable");
+			driver = new FirefoxDriver();
+			//testProfile.setEnableNativeEvents(true);
 		}
 		//IE
 		if (browser.equalsIgnoreCase("IE")) {
-			File file = new File("C:/totalwine/Library/IEDriverServer.exe");
+			File file = new File(ConfigurationFunctions.IEDRIVERPATH);
 			System.setProperty("webdriver.ie.driver", file.getAbsolutePath());
 			DesiredCapabilities caps = DesiredCapabilities.internetExplorer();
 			caps.setCapability("ignoreZoomSetting", true);
@@ -78,13 +82,13 @@ public class Browser {
 		}
 		//Chrome
 		if (browser.equalsIgnoreCase("Chrome")) {
-			File file = new File("C:/totalwine/Library/chromedriver.exe");
+			File file = new File(ConfigurationFunctions.CHROMEDRIVERPATH);
 			System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
 			driver = new ChromeDriver();
 		}
 		//iOS (iPhone 6)
 		if (browser.equalsIgnoreCase("iOS")) {
-			File file = new File("C:/totalwine/Library/chromedriver.exe");
+			File file = new File(ConfigurationFunctions.CHROMEDRIVERPATH);
 			System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
 			Map<String, String> mobileEmulation = new HashMap<String, String>();
 			mobileEmulation.put("deviceName", "Apple iPhone 6");
@@ -96,7 +100,7 @@ public class Browser {
 		}
 		//Android (Samsung Galaxy S4)
 		if (browser.equalsIgnoreCase("Android")) {
-			File file = new File("C:/totalwine/Library/chromedriver.exe");
+			File file = new File(ConfigurationFunctions.CHROMEDRIVERPATH);
 			System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
 			Map<String, String> mobileEmulation = new HashMap<String, String>();
 			mobileEmulation.put("deviceName", "Samsung Galaxy S4");

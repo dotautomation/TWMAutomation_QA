@@ -3,6 +3,10 @@
 
 <!--suite name="MultiBrowserSuite" verbose="2" parallel="tests" -->
 <suite name="MultiBrowserSuite" verbose="2" parallel="tests" thread-count="4">
+<listeners>
+      <listener class-name="org.uncommons.reportng.HTMLReporter"/>
+      <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
+  </listeners>
 	<test name="1">
 		<parameter name="browser" value="Chrome">
 		</parameter>

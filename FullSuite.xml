@@ -148,13 +148,6 @@
        <class name="com.totalwine.test.search.Search"/>
     </classes>
   </test>
-  <test name="Site Search on IE">
-   <parameter name="browser" value="IE">
-	</parameter>
-    <classes>
-       <class name="com.totalwine.test.search.Search"/>
-    </classes>
-  </test>
   <!--Category Landing Navigation (executed on Cross-Browsers)-->
   <test name="Category Landing on FF">
 	<parameter name="browser" value="FF">
@@ -188,13 +181,6 @@
   </test>
   <test name="AgeGate on Chrome">
 	<parameter name="browser" value="Chrome">
-	</parameter>
-    <classes>
-	   <class name="com.totalwine.test.agegating.AgeGate"/>
-    </classes>
-  </test>
-  <test name="AgeGate on IE">
-	<parameter name="browser" value="IE">
 	</parameter>
     <classes>
 	   <class name="com.totalwine.test.agegating.AgeGate"/>

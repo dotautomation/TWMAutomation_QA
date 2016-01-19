@@ -11,7 +11,7 @@
 		<parameter name="browser" value="Chrome">
 		</parameter>
 		<classes>
-			<class name="com.totalwine.test.brandpages.BrandList" />
+			<class name="com.totalwine.test.shoppinglist.ShoppingListAddItem" />
 		</classes>
 	</test>
 </suite>

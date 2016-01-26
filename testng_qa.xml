@@ -9,10 +9,10 @@
 		<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
 	</listeners>
 	<test name="1">
-		<parameter name="browser" value="Chrome">
+		<parameter name="browser" value="iOS">
 		</parameter>
 		<classes>
-			<class name="com.totalwine.test.aml.GoodBadPassword" />
+			<class name="com.totalwine.test.mobile.MobileISPGuestCheckout" />
 		</classes>
 	</test>
 </suite>

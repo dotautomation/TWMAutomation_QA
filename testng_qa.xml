@@ -12,7 +12,7 @@
 		<parameter name="browser" value="iOS">
 		</parameter>
 		<classes>
-			<class name="com.totalwine.test.mobile.MobileISPGuestCheckout" />
+			<class name="com.totalwine.test.mobile.MobileShipCheckout" />
 		</classes>
 	</test>
 </suite>

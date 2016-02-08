@@ -118,7 +118,6 @@
 		</classes>
 	</test>
 		
-	
 		<!--Shipping Checkout (Guest) -->
 	<test name="Guest Ship Checkout">
 		<parameter name="browser" value="Chrome">
@@ -127,7 +126,6 @@
 			<class name="com.totalwine.test.checkout.GuestShipCheckout" />
 		</classes>
 	</test>
-	
 	
 		<!--Creating Account After Guest Shipping Checkout -->
 	<test name="Creating account after Guest Checkout">
@@ -183,9 +181,7 @@
 		</classes>
 	</test>
 	
-	
-	
-	
+
 	<!--Browse Events (executed on Cross-Browsers) -->
 	<test name="Browse Events on FF">
 		<parameter name="browser" value="FF">

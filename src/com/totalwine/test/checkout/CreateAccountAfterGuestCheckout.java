@@ -32,27 +32,20 @@ package com.totalwine.test.checkout;
  * 			Quit WebDriver
  */
 
-import java.io.File;
 import java.io.IOException;
 import java.util.Random;
 import org.testng.Assert;
 import jxl.read.biff.BiffException;
-import org.testng.*;
 import org.testng.annotations.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.openqa.selenium.Keys;
 
-import com.relevantcodes.extentreports.LogStatus;
 import com.totalwine.test.config.ConfigurationFunctions;
 import com.totalwine.test.trials.Browser;
-
-import com.totalwine.test.pages.CheckoutPage;
-
 
 public class CreateAccountAfterGuestCheckout extends Browser {
 
@@ -89,8 +82,7 @@ public class CreateAccountAfterGuestCheckout extends Browser {
 //	    logger.log(LogStatus.PASS, "The site is configured for a Shipping order");
 	    
 	    ConfigurationFunctions.highlightElement(driver,driver.findElement(By.cssSelector("span.store-details-store-name.flyover-src")));
-		
-	    	    
+
 	    // **  Selecting a product from PDP
 		driver.get(ConfigurationFunctions.accessURL+PDP);
 		Thread.sleep(3000);
@@ -147,7 +139,6 @@ public class CreateAccountAfterGuestCheckout extends Browser {
 	    driver.findElement(By.id("city")).clear();
 	    driver.findElement(By.id("city")).sendKeys(City);
 	    
-
 	    // *** Creating Random Email
 	    driver.findElement(By.id("shipping-email")).clear();
 	    driver.findElement(By.id("shipping-email")).sendKeys("automatedtester_"+randomNum+"."+randomNum_2+"@totalwine.com");
@@ -160,10 +151,8 @@ public class CreateAccountAfterGuestCheckout extends Browser {
 	    driver.findElement(By.id("btnShipAuth1")).click();
 	    Thread.sleep(5000);
 //	    logger.log(LogStatus.PASS, "Creating account after Guest Checkout Tab 1");
-	    
-	    
-	    // ** Checkout Tab 2
 
+	    // ** Checkout Tab 2
 //	    WebElement radioBtn = driver.findElement(By.xpath(".//*[@value='DISCOVER']"));  //** If paid by Discover card
 //	    WebElement radioBtn = driver.findElement(By.cssSelector("input#custom_card_type[value='AMEX']"));  //** If paid by Amex card
 //	    radioBtn.click();
@@ -198,8 +187,7 @@ public class CreateAccountAfterGuestCheckout extends Browser {
 	    driver.findElement(By.name("process")).click();
 	    Thread.sleep(5000);
 //	    logger.log(LogStatus.PASS, "Creating account after Guest Checkout Tab 2");
-	      
-	    
+
 	    // **  Checkout Tab 3
 	    Assert.assertEquals(driver.findElements(By.cssSelector("a.review-tab")).isEmpty(),false);
 	    Assert.assertEquals(driver.findElements(By.cssSelector("li[class=\"co-rvw co-rvw-instore\"]")).isEmpty(),false);
@@ -209,8 +197,7 @@ public class CreateAccountAfterGuestCheckout extends Browser {
 	    Assert.assertEquals(driver.findElements(By.cssSelector("span[data-attr=\"itemPrice_2\"]")).isEmpty(),false);
 	    Assert.assertEquals(driver.findElements(By.cssSelector("span[class=\"price-text item-total anTax\"]")).isEmpty(),false);
 	    Assert.assertEquals(driver.findElements(By.cssSelector("span[class=\"price-text item-total co-pr-item-total\"]")).isEmpty(),false);
-	    
-	    
+
 	    driver.findElement(By.id("check_box_age")).click();
 	    driver.findElement(By.cssSelector("button.btn-red.btn-place-order.anPlaceOrder")).click();
 	    Thread.sleep(3000);
@@ -221,13 +208,10 @@ public class CreateAccountAfterGuestCheckout extends Browser {
 	    Assert.assertEquals(driver.findElements(By.cssSelector("div")).isEmpty(),false);
 //	    logger.log(LogStatus.PASS, "Creating account after Guest Checkout order confirmation");
 
-  
-	    
 	    //  ** Creating Account
 	    driver.findElement(By.id("btnCreateAcc")).sendKeys(Keys.ARROW_DOWN);
 	    driver.findElement(By.id("btnCreateAcc")).click();
-	    
-	    
+
 	    //  ** Checking for survey Popup
 	    if (driver.findElements(By.xpath("//img[contains(@src,'https://qdistribution.qualtrics.com/WRQualtricsShared/Graphics//black_popup_x.png')]")).size()!=0)
 	    	driver.findElement(By.xpath("//img[contains(@src,'https://qdistribution.qualtrics.com/WRQualtricsShared/Graphics//black_popup_x.png')]")).click();
@@ -236,14 +220,11 @@ public class CreateAccountAfterGuestCheckout extends Browser {
 	    driver.findElement(By.xpath(".//*[@id='co-pass']")).sendKeys("grapes123");
 	    driver.findElement(By.xpath(".//*[@id='co-pass-re']")).sendKeys("grapes123");
 
-	    
-	    
 	    //Check for survey pop-up
 	    if (driver.findElements(By.xpath("//img[contains(@src,'https://qdistribution.qualtrics.com/WRQualtricsShared/Graphics//black_popup_x.png')]")).size()!=0)
 	    	driver.findElement(By.xpath("//img[contains(@src,'https://qdistribution.qualtrics.com/WRQualtricsShared/Graphics//black_popup_x.png')]")).click();
 	    Thread.sleep(2000);
-	    
-	    
+
 	    WebElement element = driver.findElement(By.xpath(".//*[@id='frmCOCreateAcc']/table/tbody/tr[5]/td[2]/div/div/div/span/span"));  
         	new Actions(driver).moveToElement(element).perform();   //  ** Selecting element from drop-down
         	element.click();
@@ -256,7 +237,6 @@ public class CreateAccountAfterGuestCheckout extends Browser {
 	    driver.findElement(By.id("check_box_101")).click();
 	    driver.findElement(By.id("btnCOSaveAuth")).click();
 //	    logger.log(LogStatus.PASS, "Creating account after Guest Checkout - creating account");
-
 
 	    //  ** Creating online profile
 	    driver.findElement(By.id("firstName")).clear();
@@ -272,9 +252,7 @@ public class CreateAccountAfterGuestCheckout extends Browser {
 	    driver.findElement(By.id("address2")).sendKeys("Suite 210");
 	    driver.findElement(By.id("city")).clear();
 	    driver.findElement(By.id("city")).sendKeys("Bethesda");
-	    
-	    
-	    
+
 	    WebElement scroll1 = driver.findElement(By.id("zipCode"));
 	 	scroll1.sendKeys(Keys.ARROW_DOWN);   //** Scrolling down the page upto a specific element 
 	    
@@ -324,6 +302,5 @@ public class CreateAccountAfterGuestCheckout extends Browser {
 	    Assert.assertEquals(driver.findElements(By.linkText("Online order history")).isEmpty(),false);
 	    Assert.assertEquals(driver.findElements(By.cssSelector("a[class=analyticsPrefStore]")).isEmpty(),false);
 //	    logger.log(LogStatus.PASS, "Online Profile and Account Home verified");
-
 	}
 	}

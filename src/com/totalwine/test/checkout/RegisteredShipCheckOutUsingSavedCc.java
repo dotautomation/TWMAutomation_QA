@@ -77,7 +77,7 @@ import jxl.read.biff.BiffException;
 
 				
 				
-				logger=report.startTest("Registered Ship Checkout using saved credit card Test");
+//				logger=report.startTest("Registered Ship Checkout using saved credit card Test");
 				driver.get(ConfigurationFunctions.locationSet+Location);
 				Thread.sleep(5000);
 				driver.findElement(By.id("btnYes")).click();
@@ -85,7 +85,7 @@ import jxl.read.biff.BiffException;
 			    
 				
 			    Assert.assertEquals(StoreName, driver.findElement(By.cssSelector("span.store-details-store-name.flyover-src")).getText());
-			    logger.log(LogStatus.PASS, "The site is configured for an Ship order");
+//			    logger.log(LogStatus.PASS, "The site is configured for an Ship order");
 			    
 			    ConfigurationFunctions.highlightElement(driver,driver.findElement(By.cssSelector("span.store-details-store-name.flyover-src")));
 				
@@ -131,7 +131,7 @@ import jxl.read.biff.BiffException;
 			    
 			    driver.findElement(By.id("checkout")).click();
 			    Thread.sleep(3000);
-			    logger.log(LogStatus.PASS, "Shopping cart elements");
+//			    logger.log(LogStatus.PASS, "Shopping cart elements");
 							    
 
 			    // **  Next Page (Login/Checkout as a registered user)
@@ -140,7 +140,7 @@ import jxl.read.biff.BiffException;
 			    Assert.assertEquals(driver.findElements(By.cssSelector("div.checkStyle > label")).isEmpty(),false);
 			    Assert.assertEquals(driver.findElements(By.id("forgotPasswordCheckout")).isEmpty(),false);
 			    Assert.assertEquals(driver.findElements(By.id("checkoutSignIn")).isEmpty(),false);
-			    logger.log(LogStatus.PASS, "Selecting registered checkout");
+//			    logger.log(LogStatus.PASS, "Selecting registered checkout");
 			    
 			    
 			    // **  Login
@@ -150,14 +150,14 @@ import jxl.read.biff.BiffException;
 			    driver.findElement(By.id("j_password")).sendKeys(Password);
 			    driver.findElement(By.id("checkoutSignIn")).click();
 			    Thread.sleep(3000);
-			    logger.log(LogStatus.PASS, "Login");
+//			    logger.log(LogStatus.PASS, "Login");
 			    
 			    
 			    // **  Checkout Tab-1
 			    Thread.sleep(2000);
 			    
 			    driver.findElement(By.id("shiporderhere_8864324616215")).click();
-			    logger.log(LogStatus.PASS, "Clicking on Ship Order Here Radio button");
+//			    logger.log(LogStatus.PASS, "Clicking on Ship Order Here Radio button");
 			    
 			    
 			    WebElement scroll2 = driver.findElement(By.id("btnShipAuth1")); //  ** Scrolling down page
@@ -167,7 +167,7 @@ import jxl.read.biff.BiffException;
 			    driver.findElement(By.id("btnShipAuth1")).click();
 
 			    Thread.sleep(2000);
-			    logger.log(LogStatus.PASS, "Checkout Tab 1");
+//			    logger.log(LogStatus.PASS, "Checkout Tab 1");
 			    
 			    
 			    // **  Checkout Tab-2
@@ -179,7 +179,7 @@ import jxl.read.biff.BiffException;
 			    
 			    driver.findElement(By.cssSelector(".btn.btn-red.anContinue")).click();
 			    Thread.sleep(2000);
-			    logger.log(LogStatus.PASS, "Checkout Tab 2");
+//			    logger.log(LogStatus.PASS, "Checkout Tab 2");
 			    
 			    
 			    
@@ -192,7 +192,7 @@ import jxl.read.biff.BiffException;
 			    
 			    driver.findElement(By.cssSelector(".btn-red.btn-place-order.anPlaceOrder")).click();
 			    Thread.sleep(2000);
-			    logger.log(LogStatus.PASS, "Checkout Tab 3");
+//			    logger.log(LogStatus.PASS, "Checkout Tab 3");
 			    
 			    
 			    
@@ -200,7 +200,7 @@ import jxl.read.biff.BiffException;
 			    // Order Confirmation
 			    Assert.assertEquals(driver.findElements(By.cssSelector("div.co-conf-thank-text")).isEmpty(),false);
 			    Assert.assertEquals(driver.findElements(By.cssSelector("div")).isEmpty(),false);
-			    logger.log(LogStatus.PASS, "Registered Ship Checkout Order Confirmation");
+//			    logger.log(LogStatus.PASS, "Registered Ship Checkout Order Confirmation");
 			    
 			    
 			    

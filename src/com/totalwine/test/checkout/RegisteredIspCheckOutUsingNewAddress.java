@@ -75,7 +75,7 @@ package com.totalwine.test.checkout;
 				    int randomNum_2 = rand.nextInt((1000 - 1) + 1) + 1;
 					
 					
-					logger=report.startTest("Registered ISP Checkout using New address");
+//					logger=report.startTest("Registered ISP Checkout using New address");
 					driver.get(ConfigurationFunctions.locationSet+Location);
 					Thread.sleep(5000);
 					driver.findElement(By.id("btnYes")).click();
@@ -83,7 +83,7 @@ package com.totalwine.test.checkout;
 				    
 					
 				    Assert.assertEquals(StoreName, driver.findElement(By.cssSelector("span.store-details-store-name.flyover-src")).getText());
-				    logger.log(LogStatus.PASS, "The site is configured for an ISP order");
+//				    logger.log(LogStatus.PASS, "The site is configured for an ISP order");
 				    
 				    ConfigurationFunctions.highlightElement(driver,driver.findElement(By.cssSelector("span.store-details-store-name.flyover-src")));
 					
@@ -105,7 +105,7 @@ package com.totalwine.test.checkout;
 					
 				    driver.get(ConfigurationFunctions.accessURL+"/cart");
 				    Thread.sleep(3000);
-				    logger.log(LogStatus.PASS, "Item is added to cart");
+//				    logger.log(LogStatus.PASS, "Item is added to cart");
 				    			    
 				    
 				    WebElement scroll3 = driver.findElement(By.id("checkout")); // ** Scrolling page down upto the element
@@ -120,7 +120,7 @@ package com.totalwine.test.checkout;
 				    
 				    driver.findElement(By.id("checkout")).click();
 				    Thread.sleep(3000);
-				    logger.log(LogStatus.PASS, "Shopping cart");
+//				    logger.log(LogStatus.PASS, "Shopping cart");
 
 				    
 				    // **  Next Page (Verification Login/Checkout as a registered user)
@@ -129,7 +129,7 @@ package com.totalwine.test.checkout;
 				    Assert.assertEquals(driver.findElements(By.cssSelector("div.checkStyle > label")).isEmpty(),false);
 				    Assert.assertEquals(driver.findElements(By.id("forgotPasswordCheckout")).isEmpty(),false);
 				    Assert.assertEquals(driver.findElements(By.id("checkoutSignIn")).isEmpty(),false);
-				    logger.log(LogStatus.PASS, "Selecting registered checkout");
+//				    logger.log(LogStatus.PASS, "Selecting registered checkout");
 				    
 				    
 				    // **  Login
@@ -139,7 +139,7 @@ package com.totalwine.test.checkout;
 				    driver.findElement(By.id("j_password")).sendKeys(Password);
 				    driver.findElement(By.id("checkoutSignIn")).click();
 				    Thread.sleep(3000);
-				    logger.log(LogStatus.PASS, "Login");
+//				    logger.log(LogStatus.PASS, "Login");
 				    
 				    
 				    
@@ -149,13 +149,13 @@ package com.totalwine.test.checkout;
 				    
 				    driver.findElement(By.id("btnPickup")).click();
 				    Thread.sleep(2000);
-				    logger.log(LogStatus.PASS, "Checkout Tab 1");
+//				    logger.log(LogStatus.PASS, "Checkout Tab 1");
 				    
 				    
 				    // **  Checkout Tab-2 [ Checkout using New billing address ]
 				    driver.findElement(By.cssSelector("em.icon.icon-edit")).click();
 				    Thread.sleep(8000);
-				    logger.log(LogStatus.PASS, "Clicking on billing address edit link");
+//				    logger.log(LogStatus.PASS, "Clicking on billing address edit link");
 				    
 				    driver.findElement(By.id("nickName")).click();
 				    driver.findElement(By.id("nickName")).clear();
@@ -201,7 +201,7 @@ package com.totalwine.test.checkout;
   
 				    driver.findElement(By.id("btnCOSave")).click();  	    
 				    Thread.sleep(3000);
-				    logger.log(LogStatus.PASS, "Saving Edited billing address");
+//				    logger.log(LogStatus.PASS, "Saving Edited billing address");
 
 				    driver.findElement(By.id("card_8813397442602")).click();
 				    
@@ -211,7 +211,7 @@ package com.totalwine.test.checkout;
 				    
 				    driver.findElement(By.cssSelector(".btn.btn-red.anContinue")).click();
 				    Thread.sleep(2000);
-				    logger.log(LogStatus.PASS, "Checkout Tab-2 [ Checkout using New billing address ]");
+//				    logger.log(LogStatus.PASS, "Checkout Tab-2 [ Checkout using New billing address ]");
 				    
 				    
 				    // **  Checkout Tab-3
@@ -223,12 +223,12 @@ package com.totalwine.test.checkout;
 				    
 				    driver.findElement(By.cssSelector(".btn-red.btn-place-order.anPlaceOrder")).click();
 				    Thread.sleep(2000);
-				    logger.log(LogStatus.PASS, "Checkout Tab 3");
+//				    logger.log(LogStatus.PASS, "Checkout Tab 3");
 				    
 				    
 				    // Order Confirmation
 				    Assert.assertEquals(driver.findElements(By.cssSelector("div.co-conf-thank-text")).isEmpty(),false);
 				    Assert.assertEquals(driver.findElements(By.cssSelector("div")).isEmpty(),false);
-				    logger.log(LogStatus.PASS, "Registered ISP Checkout Order Confirmation");
+//				    logger.log(LogStatus.PASS, "Registered ISP Checkout Order Confirmation");
 				}
 			}

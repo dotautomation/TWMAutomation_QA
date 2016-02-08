@@ -25,7 +25,7 @@ package com.totalwine.test.checkout;
  * 	5. AfterClass
  * 			Quit webdriver
  */
-
+//@author=rsud
 import java.io.IOException;
 
 import jxl.read.biff.BiffException;
@@ -38,6 +38,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.openqa.selenium.Keys;
 
+import com.relevantcodes.extentreports.LogStatus;
 import com.totalwine.test.config.ConfigurationFunctions;
 import com.totalwine.test.trials.Browser;
 
@@ -45,7 +46,7 @@ public class ISPCheckout extends Browser {
 
 	@DataProvider(name="CheckoutParameters")
     public Object[][] createData() {
-    	Object[][] retObjArr=ConfigurationFunctions.getTableArray(ConfigurationFunctions.resourcePath,"Checkout", "ISPcheckoutQA");
+    	Object[][] retObjArr=ConfigurationFunctions.getTableArray(ConfigurationFunctions.resourcePath,"Checkout", "ISPcheckoutBFCI");
         return(retObjArr);
     } 
 	
@@ -59,14 +60,15 @@ public class ISPCheckout extends Browser {
 	@Test (dataProvider = "CheckoutParameters")
 	public void ISPCheckoutTest (String Location,String StoreName,String PDP,String ISPOption,String Quantity,String Email,String CreditCard,String ExpirationMonth,String ExpirationYear,
 			String CVV,String FirstName,String LastName,String Company,String Address1,String Address2,String City,String State,String Zip) throws InterruptedException, BiffException, IOException {
-		
+//		logger=report.startTest("ISP Guest Checkout Test");
 		driver.get(ConfigurationFunctions.locationSet+Location);
 		Thread.sleep(5000);
 		driver.findElement(By.id("btnYes")).click();
 		Thread.sleep(5000);
-	    driver.findElement(By.cssSelector("#email-signup-overlay-new-site > div.modal-dialog > div.modal-content > div.modal-body > p.close > a.btn-close")).click();
-	    Thread.sleep(5000);
+	    //driver.findElement(By.cssSelector("#email-signup-overlay-new-site > div.modal-dialog > div.modal-content > div.modal-body > p.close > a.btn-close")).click();
+	    //Thread.sleep(5000);
 	    Assert.assertEquals(StoreName, driver.findElement(By.cssSelector("span.store-details-store-name.flyover-src")).getText());
+//	    logger.log(LogStatus.PASS, "The site is configured for an ISP order");
 	    ConfigurationFunctions.highlightElement(driver,driver.findElement(By.cssSelector("span.store-details-store-name.flyover-src")));
 		
 		// Add to Cart
@@ -80,6 +82,7 @@ public class ISPCheckout extends Browser {
 	    //driver.findElement(By.cssSelector("div.cart-popup")).click();
 	    driver.get(ConfigurationFunctions.accessURL+"/cart");
 	    Thread.sleep(3000);
+//	    logger.log(LogStatus.PASS, "Item is added to cart");
 	    
 	    // Shopping Cart
 	    WebElement scroll = driver.findElement(By.id("checkout"));
@@ -90,6 +93,7 @@ public class ISPCheckout extends Browser {
 	    Assert.assertEquals(driver.findElements(By.name("qty")).isEmpty(),false);
 	    driver.findElement(By.id("checkout")).click();
 	    Thread.sleep(3000);
+//	    logger.log(LogStatus.PASS, "Shopping cart");
 	    
 	    // Next Page (Login/Checkout as Guest)
 	    Assert.assertEquals(driver.findElements(By.id("j_username")).isEmpty(),false);
@@ -99,6 +103,7 @@ public class ISPCheckout extends Browser {
 	    Assert.assertEquals(driver.findElements(By.id("checkoutSignIn")).isEmpty(),false);
 	    driver.findElement(By.cssSelector("#checkoutGuestForm > div.button-container > button.btn.btn-red")).click();
 	    Thread.sleep(3000);
+//	    logger.log(LogStatus.PASS, "Checkout as Guest/LoggedIn user");
 	    
 	    // Checkout Tab 1
 	    Assert.assertEquals(driver.findElements(By.cssSelector("a.instorepickup-tab")).isEmpty(),false);
@@ -114,6 +119,7 @@ public class ISPCheckout extends Browser {
 	    driver.findElement(By.id("pickup-phoneNumber")).sendKeys("410-428-2222");
 	    driver.findElement(By.id("btnPickup")).click();
 	    Thread.sleep(5000);
+//	    logger.log(LogStatus.PASS, "Guest ISP Checkout Tab 1");
 	    
 	    // Checkout Tab 2
 	    Assert.assertEquals(driver.findElements(By.cssSelector("a.billing-tab")).isEmpty(),false);
@@ -125,6 +131,7 @@ public class ISPCheckout extends Browser {
 	    driver.findElement(By.id("custom_card_type")).click();
 	    driver.findElement(By.cssSelector("div[class=\"inputHolder month\"]")).click();
 	    driver.findElement(By.xpath("//td[2]/div/div/div/div/div/div/ul/li[2]")).click();
+	    //driver.findElement(By.xpath("//li[5]")).click();
 	    driver.findElement(By.cssSelector("div[class=\"inputHolder year\"]")).click();
 	    driver.findElement(By.xpath("//td[2]/div[2]/div/div/div/div/div/ul/li[3]")).click();
 	    driver.findElement(By.id("ssl_cvv2cvc2")).clear();
@@ -147,6 +154,7 @@ public class ISPCheckout extends Browser {
 	    driver.findElement(By.id("ssl_avs_zip")).sendKeys(Zip);
 	    driver.findElement(By.name("process")).click();
 	    Thread.sleep(10000);
+//	    logger.log(LogStatus.PASS, "Guest ISP Checkout Tab 2");
 	    
 	    // Checkout Tab 3
 	    Assert.assertEquals(driver.findElements(By.cssSelector("a.review-tab")).isEmpty(),false);
@@ -158,14 +166,18 @@ public class ISPCheckout extends Browser {
 	    Assert.assertEquals(driver.findElements(By.cssSelector("span[data-attr=\"itemPrice_2\"]")).isEmpty(),false);
 	    Assert.assertEquals(driver.findElements(By.cssSelector("span[class=\"price-text item-total anTax\"]")).isEmpty(),false);
 	    Assert.assertEquals(driver.findElements(By.cssSelector("span[class=\"price-text item-total co-pr-item-total\"]")).isEmpty(),false);
+	    
 	    driver.findElement(By.id("check_box_age")).click();
-	    driver.findElement(By.xpath("//form[@id='placeOrderForm1']/section/div/button")).click();
+	    //driver.findElement(By.xpath("//form[@id='placeOrderForm1']/section/div/button")).click();
+	    driver.findElement(By.cssSelector("button.btn-red.btn-place-order.anPlaceOrder")).click();
 	    Thread.sleep(10000);
+//	    logger.log(LogStatus.PASS, "Guest ISP Checkout Tab 3");
 	    
 	    // Order Confirmation
 	    //Assert.assertEquals(driver.findElements(By.linkText("Post to Facebook")).isEmpty(),false);
 	    //Assert.assertEquals(driver.findElements(By.cssSelector("div.co-conf-help-link")).isEmpty(),false);
 	    Assert.assertEquals(driver.findElements(By.cssSelector("div.co-conf-thank-text")).isEmpty(),false);
 	    Assert.assertEquals(driver.findElements(By.cssSelector("div")).isEmpty(),false);
+//	    logger.log(LogStatus.PASS, "Guest ISP Checkout Order Confirmation");
 	}
 }

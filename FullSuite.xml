@@ -119,7 +119,7 @@
 	</test>
 		
 	
-	<!--Shipping Checkout (Guest) -->
+		<!--Shipping Checkout (Guest) -->
 	<test name="Guest Ship Checkout">
 		<parameter name="browser" value="Chrome">
 		</parameter>
@@ -135,6 +135,51 @@
 		</parameter>
 		<classes>
 			<class name="com.totalwine.test.checkout.CreateAccountAfterGuestCheckout" />
+		</classes>
+	</test>
+	
+		<!--Registered user ISP Checkout using saved Credit card -->
+	<test name="Registered user ISP Checkout using saved Credit card">
+		<parameter name="browser" value="Chrome">
+		</parameter>
+		<classes>
+			<class name="com.totalwine.test.checkout.RegisteredISPCheckOutUsingSavedCc" />
+		</classes>
+	</test>
+	
+		<!--Registered user Ship Checkout using saved Credit card -->
+	<test name="Registered user Ship Checkout using saved Credit card">
+		<parameter name="browser" value="Chrome">
+		</parameter>
+		<classes>
+			<class name="com.totalwine.test.checkout.RegisteredShipCheckOutUsingSavedCc" />
+		</classes>
+	</test>
+
+		<!--Modifying shopping cart during Checkout -->
+	<test name="Modifying shopping cart during Checkout">
+		<parameter name="browser" value="Chrome">
+		</parameter>
+		<classes>
+			<class name="com.totalwine.test.checkout.ModifyShoppingCartDuringCheckout" />
+		</classes>
+	</test>
+
+		<!--Registered ISP Checkout using saved address -->
+	<test name="Registered ISP Checkout using saved address">
+		<parameter name="browser" value="Chrome">
+		</parameter>
+		<classes>
+			<class name="com.totalwine.test.checkout.RegisteredIspCheckOutUsingSavedAddress" />
+		</classes>
+	</test>
+
+		<!--Registered ISP Checkout using New address -->
+	<test name="Registered ISP Checkout using New address">
+		<parameter name="browser" value="Chrome">
+		</parameter>
+		<classes>
+			<class name="com.totalwine.test.checkout.RegisteredIspCheckOutUsingNewAddress" />
 		</classes>
 	</test>
 	

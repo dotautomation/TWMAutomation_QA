@@ -60,7 +60,7 @@ package com.totalwine.test.checkout;
 								
 								throws InterruptedException, BiffException, IOException {
 
-//					logger=report.startTest("Registered ISP Checkout using saved address");
+					logger=report.startTest("Registered ISP Checkout using saved address");
 					driver.get(ConfigurationFunctions.locationSet+Location);
 					Thread.sleep(5000);
 					driver.findElement(By.id("btnYes")).click();

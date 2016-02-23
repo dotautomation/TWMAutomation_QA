@@ -70,7 +70,7 @@ public class CreateAccountAfterGuestCheckout extends Browser {
 	    int randomNum = rand.nextInt((1000 - 1) + 1) + 1;
 	    int randomNum_2 = rand.nextInt((1000 - 1) + 1) + 1;
 		
-//	    logger=report.startTest("Creating account after Guest Checkout");
+	    logger=report.startTest("Creating account after Guest Checkout");
 	    
 		driver.get(ConfigurationFunctions.locationSet+Location);
 		Thread.sleep(5000);

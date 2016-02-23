@@ -63,7 +63,7 @@ package com.totalwine.test.checkout;
 								
 								throws InterruptedException, BiffException, IOException {
 
-//					logger=report.startTest("Modifying Shopping Cart during checkout");
+					logger=report.startTest("Modifying Shopping Cart during checkout");
 					driver.get(ConfigurationFunctions.locationSet+Location);
 					Thread.sleep(5000);
 					driver.findElement(By.id("btnYes")).click();

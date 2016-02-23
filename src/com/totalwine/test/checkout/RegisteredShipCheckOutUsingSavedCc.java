@@ -63,7 +63,7 @@ import jxl.read.biff.BiffException;
 							
 							throws InterruptedException, BiffException, IOException {
 
-//				logger=report.startTest("Registered Ship Checkout using saved credit card Test");
+				logger=report.startTest("Registered Ship Checkout using saved credit card Test");
 				driver.get(ConfigurationFunctions.locationSet+Location);
 				Thread.sleep(5000);
 				driver.findElement(By.id("btnYes")).click();

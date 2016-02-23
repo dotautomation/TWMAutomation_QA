@@ -54,7 +54,7 @@ public class WebAccountRegistration extends Browser {
 	
 	@Test 
 	public void RegistrationTest () throws InterruptedException, BiffException, IOException {
-		
+		logger=report.startTest("Web Account Registration Test");
 		Random rand = new Random();
 	    int randomNum = rand.nextInt((1000 - 1) + 1) + 1;
 	    int randomNum_2 = rand.nextInt((1000 - 1) + 1) + 1;

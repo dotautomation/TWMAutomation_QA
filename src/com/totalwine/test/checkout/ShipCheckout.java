@@ -61,7 +61,7 @@ public class ShipCheckout extends Browser {
 	
 	@Test (dataProvider = "CheckoutParameters")
 	public void ShipCheckoutTest (String Location,String StoreName,String PDP,String Quantity,String ShipOption,String Email,String Password, String Phone,String FirstName,String LastName,String Company,String Address1,String Address2,String City,String State,String Zip) throws InterruptedException, BiffException, IOException {
-//		logger=report.startTest("Ship Registered Checkout Test");
+		logger=report.startTest("Ship Registered Checkout Test");
 		driver.get(ConfigurationFunctions.locationSet+Location);
 		Thread.sleep(5000);
 		driver.findElement(By.id("btnYes")).click();

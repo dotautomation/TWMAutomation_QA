@@ -42,6 +42,7 @@ public class SLBrowseByRadius extends Browser {
 	
 	@Test //Stores by State dropdown
 	public void SLBrowseByRadiusTest () throws InterruptedException {
+		logger=report.startTest("Store Locator: Stores by State dropdown Test");
 		String IP = "98.169.134.0"; //McLean
 		driver.get(ConfigurationFunctions.locationSet+IP);
 		Thread.sleep(5000);

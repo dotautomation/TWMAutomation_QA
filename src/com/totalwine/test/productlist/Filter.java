@@ -56,7 +56,7 @@ public class Filter extends Browser {
 	
 	@Test 
 	public void FilterTest () throws InterruptedException, BiffException, IOException, AWTException {
-		
+		logger=report.startTest("PLP Filters Test");
 		driver.get(ConfigurationFunctions.locationSet+IP);
 		Thread.sleep(5000);
 		driver.findElement(By.id("btnYes")).click();

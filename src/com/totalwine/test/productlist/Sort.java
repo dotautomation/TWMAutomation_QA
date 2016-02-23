@@ -45,21 +45,16 @@ import com.totalwine.test.trials.Browser;
 
 public class Sort extends Browser {
 
-	//private WebDriver driver;
-	//ProfilesIni profile = new ProfilesIni();
-	//FirefoxProfile testProfile = profile.getProfile("WebDriver");
 	private String IP="71.193.51.0";
 	
 	@BeforeMethod
 	  public void setUp() throws Exception {
-		//this.driver = ConfigurationFunctions.driver;
-		//driver = new FirefoxDriver(testProfile);
 	    driver.manage().window().maximize();	
 	}  
 	
 	@Test 
 	public void SortTest () throws InterruptedException, BiffException, IOException {
-		
+		logger=report.startTest("PLP Sort Test");
 		driver.get(ConfigurationFunctions.locationSet+IP);
 		Thread.sleep(5000);
 		driver.findElement(By.id("btnYes")).click();

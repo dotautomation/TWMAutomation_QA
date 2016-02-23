@@ -56,6 +56,7 @@ public class EmailSignup extends Browser {
 	@Test //(dataProvider = "EmailSignup") //Existing Email Address
 	public void EmailSignupTest () throws InterruptedException, BiffException, IOException {
 		//String [] emailAddresses = {"automate1@totalwine.com","automate2@totalwine.com","automate3@totalwine.com","automate4@totalwine.com"};
+		logger=report.startTest("Email Signup Test");
 		driver.get(ConfigurationFunctions.locationSet+"71.193.51.0");
 		Thread.sleep(2000);
 		driver.findElement(By.id("btnYes")).click();

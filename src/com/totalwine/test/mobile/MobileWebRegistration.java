@@ -39,7 +39,7 @@ public class MobileWebRegistration extends Browser {
 	
 	@Test 
 	public void MobileWebRegistrationTest () throws InterruptedException {
-		
+		logger=report.startTest("Mobile Web Registration Test");
 		Random rand = new Random();
 	    int randomNum = rand.nextInt((1000 - 1) + 1) + 1;
 	    int randomNum_2 = rand.nextInt((1000 - 1) + 1) + 1;

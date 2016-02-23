@@ -40,6 +40,7 @@ public class Promotion extends Browser {
 
 	@Test //Eligible WD Item
 	public void EligiblePromotion () throws InterruptedException {
+		logger=report.startTest("Promotions: Eligible Item Test");
 		driver.get(ConfigurationFunctions.locationSet+IP);
 		Thread.sleep(5000);
 		driver.findElement(By.id("btnYes")).click();
@@ -76,6 +77,7 @@ public class Promotion extends Browser {
 	
 	@Test  //Ineligible WD Item
 	public void IneligibleVarietalPromotion () throws InterruptedException {
+		logger=report.startTest("Promotions: Ineligble Item Test");
 		driver.get(ConfigurationFunctions.locationSet+IP);
 		Thread.sleep(5000);
 		driver.findElement(By.id("btnYes")).click();
@@ -112,6 +114,7 @@ public class Promotion extends Browser {
 	
 	@Test //Ineligible .97 Item
 	public void Ineligible97Promotion () throws InterruptedException {
+		logger=report.startTest("Promotions: Ineligible .97 Item Test");
 		driver.get(ConfigurationFunctions.locationSet+IP);
 		Thread.sleep(5000);
 		driver.findElement(By.id("btnYes")).click();
@@ -148,6 +151,7 @@ public class Promotion extends Browser {
 	
 	@Test //Ineligible Category
 	public void IneligibleCategoryPromotion () throws InterruptedException {
+		logger=report.startTest("Promotions: Ineligible Category Test");
 		driver.get(ConfigurationFunctions.locationSet+IP);
 		Thread.sleep(5000);
 		driver.findElement(By.id("btnYes")).click();
@@ -184,6 +188,7 @@ public class Promotion extends Browser {
 	
 	@Test  //Price restriction
 	public void InEligiblePricePromotion () throws InterruptedException {
+		logger=report.startTest("Promotions: Ineligible Price Test");
 		driver.get(ConfigurationFunctions.locationSet+IP);
 		Thread.sleep(5000);
 		driver.findElement(By.id("btnYes")).click();

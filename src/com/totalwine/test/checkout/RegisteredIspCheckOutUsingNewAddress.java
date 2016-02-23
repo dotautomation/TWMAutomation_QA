@@ -67,7 +67,7 @@ package com.totalwine.test.checkout;
 				    int randomNum = rand.nextInt((1000 - 1) + 1) + 1;
 				    int randomNum_2 = rand.nextInt((1000 - 1) + 1) + 1;
 
-//					logger=report.startTest("Registered ISP Checkout using New address");
+					logger=report.startTest("Registered ISP Checkout using New address");
 					driver.get(ConfigurationFunctions.locationSet+Location);
 					Thread.sleep(5000);
 					driver.findElement(By.id("btnYes")).click();

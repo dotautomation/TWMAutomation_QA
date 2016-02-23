@@ -40,6 +40,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.totalwine.test.config.ConfigurationFunctions;
+import com.totalwine.test.pages.PageGlobal;
 import com.totalwine.test.trials.Browser;
 
 public class WebAccountRegistration extends Browser {
@@ -64,12 +65,12 @@ public class WebAccountRegistration extends Browser {
 		//driver.manage().window().maximize();
 		driver.get(ConfigurationFunctions.locationSet+"71.193.51.0");
 		Thread.sleep(5000);
-		driver.findElement(By.id("btnYes")).click();
+		driver.findElement(PageGlobal.AgeGateYes).click();
 		Thread.sleep(5000);
-	    driver.findElement(By.cssSelector("#email-signup-overlay-new-site > div.modal-dialog > div.modal-content > div.modal-body > p.close > a.btn-close")).click();
+	    driver.findElement(PageGlobal.NewSiteIntroClose).click();
 	    Thread.sleep(5000);
 		
-	    driver.findElement(By.linkText("Account")).click();
+	    driver.findElement(PageGlobal.TopNavAccount).click();
 	    Thread.sleep(2000);
 	    
     	Assert.assertEquals(driver.findElements(By.linkText("Sign into your account")).isEmpty(),false);
@@ -96,13 +97,13 @@ public class WebAccountRegistration extends Browser {
 	    driver.findElement(By.id("checkEmail")).sendKeys(email);
 	    driver.findElement(By.id("pwd")).sendKeys("grapes");
 	    Assert.assertEquals(driver.findElements(By.cssSelector("div.passwordstrength > ul > li.active")).isEmpty(),false);
-	    driver.findElement(By.id("pwd")).sendKeys("grapes123");
+	    driver.findElement(By.id("pwd")).sendKeys("grapes123!");
 	    Assert.assertEquals(driver.findElements(By.xpath("//form[@id='newuserregistration']/section/div[2]/div[5]/div[11]/div/ul/li[3]")).isEmpty(),false);
 	    driver.findElement(By.id("pwd")).clear();
 	    driver.findElement(By.id("pwd")).sendKeys("");
 	    driver.findElement(By.id("pwd")).sendKeys("grapes123!");
 	    Assert.assertEquals(driver.findElements(By.xpath("//form[@id='newuserregistration']/section/div[2]/div[5]/div[11]/div/ul/li[4]")).isEmpty(),false);
-	    driver.findElement(By.id("checkPwd")).sendKeys("grapes123!");
+	    driver.findElement(By.id("checkPwd")).sendKeys("grapes123");
 	    driver.findElement(By.id("phone")).sendKeys("3015470004");
 	    Assert.assertEquals("301-547-0004", driver.findElement(By.id("phone")).getAttribute("value"));
 	    driver.findElement(By.id("compName")).clear();

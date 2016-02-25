@@ -8,7 +8,7 @@
 		<parameter name="browser" value="Chrome">
 		</parameter>
 		<classes>
-			<class name="com.totalwine.test.checkout.ShipCheckout" />
+			<class name="com.totalwine.test.productlist.PLPListView" />
 		</classes>
 	</test>
 </suite>

@@ -63,7 +63,7 @@ public class ShoppingCartAll extends Browser {
 	
 	@Test
 	public void ShoppingCartAllTest () throws InterruptedException, BiffException, IOException {
-		logger=report.startTest("Shopping Cart Add / Remove Test");
+		logger=report.startTest("Shopping Cart All");
 		driver.get(ConfigurationFunctions.locationSet+IP);
 		Thread.sleep(5000);
 		driver.findElement(PageGlobal.AgeGateYes).click();
@@ -76,9 +76,9 @@ public class ShoppingCartAll extends Browser {
 	    //** Adding 4 different items into the shopping cart
 	    driver.findElement(By.cssSelector("li:nth-child(2) > div > div.plp-product-desc-wrap > div.plp-product-desc > h2 > a")).click();
 	    ShoppingCart.ATC(driver);
-		ShoppingCart.MouseHoverWine(driver);
+	    ShoppingCart.MouseHoverWine(driver);
 
-	    driver.findElement(By.cssSelector("li:nth-child(3) > div > div.plp-product-desc-wrap > div.plp-product-desc > h2 > a")).click();
+		driver.findElement(By.cssSelector("li:nth-child(3) > div > div.plp-product-desc-wrap > div.plp-product-desc > h2 > a")).click();
 	    ShoppingCart.ATC(driver);
 		ShoppingCart.MouseHoverWine(driver);	      
 	    

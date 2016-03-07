@@ -34,6 +34,7 @@ package com.totalwine.test.storelocator;
  */
 
 import java.awt.AWTException;
+
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
@@ -109,6 +110,11 @@ public class StoreDetail extends Browser {
 	    
 	    Assert.assertEquals(driver.findElements(By.cssSelector("div.events-classes-items-content")).isEmpty(), false);//Upcoming Store Events
 	    Assert.assertEquals(driver.findElements(By.cssSelector("a#upcomingEventLink")).isEmpty(), false);//See all events
+	    
+	    //Validate the Get Directions link
+	    driver.findElement(By.cssSelector("a.getdir.analyticsGetDir")).click();
+	    Thread.sleep(2000);
+	    Assert.assertEquals(driver.findElements(By.cssSelector("input#SUBMIT")).isEmpty(), false);
 	    
 		//Click Make this my store button and validate store session change
 	    driver.findElement(By.cssSelector("button#startInStoreBtn")).click();

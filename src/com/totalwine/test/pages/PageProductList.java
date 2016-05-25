@@ -21,7 +21,9 @@ public class PageProductList {
 	public static final By ListView = By.cssSelector("a.analyticsViewAsList"); //View as list
 	public static final By ListViewDefault = By.cssSelector("a.analyticsViewAsList.active.activeicon"); //Default list view
 	public static final By GridView = By.cssSelector("a.analyticsViewAsGrid"); //View as grid
-	
+	//Messaging
+	public static final By GlobalMessaging = By.cssSelector("section.plp-product-tabs > p.msg-noitems");
+	public static final By PLPMessaging = By.cssSelector("section#plp-product-tab1 > p.msg-noitems");
 	
 	
 	//List View
@@ -69,7 +71,7 @@ public class PageProductList {
 	public static final By GridPickupBadge =By.cssSelector("div.plp-product-delivery"); //Pickup badge
 	public static final By GridATC =By.cssSelector("form.add_to_cart_form.clear_fix"); // Add to cart
 	public static final By GridATL =By.cssSelector("button.btn.btn-brown-pattern.anAddToListInit"); //Add to listBy.cssSelector("div.plp-list-img-wdlogo"); //WD Logo
-	
+
 	//Mobile
 	public static final By MobilePLPSort = By.cssSelector("select#sortOptions"); //Sort dropdown
 	public static final By MobilePLPFilter = By.cssSelector("button.btn-brown.anFilterProd");//Filter button

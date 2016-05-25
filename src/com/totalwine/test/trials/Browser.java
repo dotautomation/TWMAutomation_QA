@@ -12,12 +12,15 @@ package com.totalwine.test.trials;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.Platform;
@@ -52,8 +55,9 @@ public class Browser {
 
 	protected WebDriver driver;
 	protected String hubURL = "http://prt-dotautotest.totalwine.com:5566/wd/hub";
-	protected static ExtentTest logger;
+	protected ExtentTest logger;
 	protected static ExtentReports report = getReporter(); //Reporting v2
+	protected JavascriptExecutor js = (JavascriptExecutor)driver;
 	protected SoftAssert sAssert = new SoftAssert(); //Soft assertion
 	
 	@BeforeMethod
@@ -94,7 +98,6 @@ public class Browser {
 		}
 		//Chrome
 		if (browser.equalsIgnoreCase("Chrome")) {
-			
 			Runtime rt = Runtime.getRuntime();
 			try {
 				rt.exec("taskkill /f /im chromedriver.exe /t");
@@ -104,7 +107,6 @@ public class Browser {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			
 			File file = new File(ConfigurationFunctions.CHROMEDRIVERPATH);
 			System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
 			driver = new ChromeDriver();
@@ -184,21 +186,21 @@ public class Browser {
 			}
 		}
 		//Grid - iOS (iPhone 6)
-				if (browser.equalsIgnoreCase("iOSGrid")) {
-					DesiredCapabilities cap = DesiredCapabilities.chrome();
-					Map<String, String> mobileEmulation = new HashMap<String, String>();
-					mobileEmulation.put("deviceName", "Apple iPhone 6");
-					Map<String, Object> chromeOptions = new HashMap<String, Object>();
-					chromeOptions.put("mobileEmulation", mobileEmulation);
-					cap.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
-				    cap.setBrowserName("chrome");
-				    cap.setPlatform(Platform.VISTA);
-				    try {
-						driver = new RemoteWebDriver(new URL(hubURL),cap); //Hub URL
-					} catch (MalformedURLException e) {
-						e.printStackTrace();
-					} 
-				}
+		if (browser.equalsIgnoreCase("iOSGrid")) {
+			DesiredCapabilities cap = DesiredCapabilities.chrome();
+			Map<String, String> mobileEmulation = new HashMap<String, String>();
+			mobileEmulation.put("deviceName", "Apple iPhone 6");
+			Map<String, Object> chromeOptions = new HashMap<String, Object>();
+			chromeOptions.put("mobileEmulation", mobileEmulation);
+			cap.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
+		    cap.setBrowserName("chrome");
+		    cap.setPlatform(Platform.VISTA);
+		    try {
+				driver = new RemoteWebDriver(new URL(hubURL),cap); //Hub URL
+			} catch (MalformedURLException e) {
+				e.printStackTrace();
+			} 
+		}
 	}
 	
 	@AfterMethod
@@ -206,10 +208,10 @@ public class Browser {
 		if(testResult.getStatus() == ITestResult.FAILURE) { 
 			File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 			String scrName = "FAIL_"+testResult.getName()+"_"+ConfigurationFunctions.now()+".png"; //Name of screenshot file
-			String scrFileName = "C:\\Users\\rsud\\.jenkins\\userContent\\FailureScreenshots\\QA\\"+scrName;
+			String scrFileName = "C:\\Users\\rsud\\.jenkins\\userContent\\FailureScreenshots\\qa\\"+scrName;
 			File FailedFile = new File (scrFileName);
 			FileUtils.copyFile(scrFile, FailedFile);
-			String relativePath = "/userContent/FailureScreenshots/QA/"+scrName; 
+			String relativePath = "/userContent/FailureScreenshots/qa/"+scrName; 
 			String screenshot = logger.addScreenCapture(relativePath);
 			System.out.println(testResult.getThrowable().toString().split(":")[0]); //Exception Handling & Reporting
 			String logOutput = ExceptionHandler(testResult.getThrowable().toString().split(":")[0]);
@@ -217,7 +219,7 @@ public class Browser {
 			logger.log(LogStatus.FAIL,"Error Stack: "+testResult.getThrowable());
 			logger.log(LogStatus.FAIL,"Error Description: "+logOutput);
 		}
-		else if (testResult.getStatus() == ITestResult.SUCCESS)
+		else if (testResult.getStatus() == ITestResult.SUCCESS) 
 			logger.log(LogStatus.PASS,testResult.getName()+" passed");
 		report.endTest(logger);
 		report.flush();
@@ -232,7 +234,7 @@ public class Browser {
 	public static synchronized ExtentReports getReporter() {
 		if (report == null) {
 			//report = new ExtentReports(ConfigurationFunctions.RESULTSPATH+"BugfixTestResults "+ConfigurationFunctions.now()+".html", true, DisplayOrder.NEWEST_FIRST);
-			report = new ExtentReports(ConfigurationFunctions.RESULTSPATH+"QATestResults.html", true, DisplayOrder.NEWEST_FIRST);
+			report = new ExtentReports(ConfigurationFunctions.RESULTSPATH+"qaTestResults.html", true, DisplayOrder.NEWEST_FIRST);
 		}
 		return report;
 	}
@@ -250,8 +252,8 @@ public class Browser {
 		return log;
 	}
 	
-	public void PageLoad(WebDriver driver) {
-	    new WebDriverWait(driver, 30).until((ExpectedCondition<Boolean>) wd ->
+	public static void PageLoad(WebDriver driver) {
+	    new WebDriverWait(driver, 50).until((ExpectedCondition<Boolean>) wd ->
 	            ((JavascriptExecutor) wd).executeScript("return document.readyState").equals("complete"));
 	}
 }

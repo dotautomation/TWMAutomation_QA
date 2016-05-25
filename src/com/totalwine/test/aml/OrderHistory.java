@@ -26,6 +26,7 @@ import org.testng.annotations.Test;
 import org.openqa.selenium.By;
 import org.testng.annotations.BeforeMethod;
 
+import com.totalwine.test.actions.SiteAccess;
 import com.totalwine.test.config.ConfigurationFunctions;
 import com.totalwine.test.trials.Browser;
 import com.totalwine.test.pages.*;
@@ -41,13 +42,8 @@ public class OrderHistory extends Browser {
 	
 	@Test
 	public void OrderHistoryTest () throws InterruptedException {
-		logger=report.startTest("Order History Test");
-		driver.get(ConfigurationFunctions.locationSet+IP);
-		Thread.sleep(5000);
-		driver.findElement(PageGlobal.AgeGateYes).click();
-		Thread.sleep(5000);
-	    driver.findElement(PageGlobal.NewSiteIntroClose).click();
-	    Thread.sleep(5000);
+		logger=report.startTest("AML Order History Test (In-store and Shipping Orders)");
+		SiteAccess.ActionAccessSite(driver, IP);
 	    
 	    //Access the sign in modal
 	    driver.findElement(PageGlobal.TopNavAccount).click();
@@ -57,7 +53,7 @@ public class OrderHistory extends Browser {
 	    //Enter valid credentials for an account having an online and in-store order history
 	    driver.switchTo().frame("iframe-signin-overlay");
 	    driver.findElement(PageSignInModal.ModalUsername).clear();
-	    driver.findElement(PageSignInModal.ModalUsername).sendKeys("rsud@totalwine.com");
+	    driver.findElement(PageSignInModal.ModalUsername).sendKeys("mhossain@totalwine.com");
 	    driver.findElement(PageSignInModal.ModalPassword).clear();
 	    driver.findElement(PageSignInModal.ModalPassword).sendKeys("grapes123");
 	    driver.findElement(PageSignInModal.ModalSigninButton).click();

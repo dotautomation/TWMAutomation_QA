@@ -19,39 +19,42 @@ package com.totalwine.test.mobile;
  * 	4. AfterClass
  * 			Quit webdriver
  */
-
 import org.testng.*;
 import org.testng.annotations.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 
+import com.totalwine.test.actions.SiteAccess;
 import com.totalwine.test.config.ConfigurationFunctions;
+import com.totalwine.test.pages.PageGlobal;
 import com.totalwine.test.trials.Browser;
-
 
 public class MobileBrowseEvent extends Browser {
 	
-	private String IP="71.193.51.0";
+	private String IP="72.66.119.61";
 	
 	@Test 
 	public void MobileBrowseEventTest () throws InterruptedException {
-		logger=report.startTest("Mobile Browse Events Test");
+		logger=report.startTest("Mobile Browse Event Test");
 		driver.get(ConfigurationFunctions.locationSet+IP);
 		Thread.sleep(5000);
-		if (driver.findElement(By.id("btn-continue")).isDisplayed())
-			driver.findElement(By.id("btn-continue")).click();
-		driver.findElement(By.id("btnYes")).click();
+		driver.findElement(PageGlobal.AgeGateYes).click();
 		Thread.sleep(5000);
 
-	    driver.findElement(By.partialLinkText("Events near you")).click();
+		SiteAccess.ActionAccessMobileAgeGate(driver);
+		JavascriptExecutor js1 = (JavascriptExecutor)driver;  // Finding out elements that are out of sight
+		js1.executeScript("arguments[0].click();", driver.findElement(By.partialLinkText("Events near you")));        
 	    Thread.sleep(3000);
+	    SiteAccess.ActionAccessMobileAgeGate(driver);
+
 	    //Validate Mobile ELP
 	    Assert.assertEquals(driver.findElements(By.cssSelector("section.elp-pagetitle")).isEmpty(),false);
 	    Assert.assertEquals(driver.findElements(By.cssSelector("button.btn-brown.anFilter")).isEmpty(),false);
 	    Assert.assertEquals(driver.findElements(By.cssSelector("div.elp-event-img")).isEmpty(),false);
 	    Assert.assertEquals(driver.findElements(By.cssSelector("button.eventCalender.anAddToCalendar")).isEmpty(),false);
-	    
 	    driver.findElement(By.xpath("//a[contains(@href,'/e/ec')]")).click();
 	    Thread.sleep(3000);
+	    SiteAccess.ActionAccessMobileAgeGate(driver);
 	    
 	    //Validate Mobile EDP (same as Desktop EDP)
 	    Assert.assertEquals(driver.findElements(By.cssSelector("section.store-right-hours-tasting > div.search-result-list-buy-ctrls")).isEmpty(),false);
@@ -59,6 +62,5 @@ public class MobileBrowseEvent extends Browser {
 	    Assert.assertEquals(driver.findElements(By.cssSelector("ul.right-rail-typo > li")).isEmpty(),false);
 	    Assert.assertEquals(driver.findElements(By.cssSelector("li.print-container.anPrintEventDetails")).isEmpty(),false);
 	    Assert.assertEquals(driver.findElements(By.linkText("Events")).isEmpty(),false);
-	    Assert.assertEquals(driver.findElements(By.xpath("//form[@id='eventInfoIcs']/button")).isEmpty(),false);
 	}
 }

@@ -34,11 +34,14 @@ public class ConfigurationFunctions {
 
 	
 	//Environment
-	//public static final String accessURL="http://twmuatwebserver:webserveruattwm@uat.totalwine.com";
+	//public static final String accessURL="http://twmqawebserver:webserverqatwm@qa.totalwine.com";
 	public static final String accessURL="http://qa.totalwine.com";
+	public static final String backofficeURL = "http://qa.totalwine.com";
 	//Browser Configuration Variables
+	//public static final String locationSet = "http://twmqawebserver:webserverqatwm@qa.totalwine.com/?remoteTestIPAddress=";//qa
+	//public static final String locationSet = "http://twmlaunchsite:dot@internal@launch.totalwine.com/?remoteTestIPAddress=";//Production
 	public static final String locationSet = "http://qa.totalwine.com/?remoteTestIPAddress=";//Phased Launch
-	//public static final String URL = "http://twmuatwebserver:webserveruattwm@uat.totalwine.com/?remoteTestIPAddress=199.167.92.70";
+	//public static final String URL = "http://twmqawebserver:webserverqatwm@qa.totalwine.com/?remoteTestIPAddress=199.167.92.70";
 	public static final String URL = "http://qa.totalwine.com/?remoteTestIPAddress=";
 	public static final ProfilesIni profile = new ProfilesIni();
 	public static final FirefoxProfile testProfile = profile.getProfile("WebDriver");
@@ -46,10 +49,10 @@ public class ConfigurationFunctions {
 	public static final String resourcePath = "C:\\twmautomation\\TWMAutomation_Prod\\Resources\\AutomatedFlows.xls";
 	public static final String CHROMEDRIVERPATH = "C:/twmautomation/lib/lib/chromedriver.exe";
 	public static final String IEDRIVERPATH = "C:/twmautomation/lib/lib/IEDriverServer.exe";
-	//public static final String RESULTSPATH = "C:\\Users\\rsud\\.jenkins\\jobs\\Regression Suite (Bugfix)\\reports\\html\\";
 	public static final String RESULTSPATH = "C:\\autoreports\\";
 	public static final String TESTLOGIN = "rsud@live.com";
 	public static final String TESTPWD = "grapes123";
+	
 	
 	public static void DeleteCookies() {
 		WebDriver driver = new FirefoxDriver(testProfile);

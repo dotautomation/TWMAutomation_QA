@@ -14,14 +14,11 @@ public class Results {
 	
 	@Test
 	public void ArchiveResults() throws IOException {
-		//File file = new File("C:\\Users\\rsud\\.jenkins\\jobs\\Regression Suite (Bugfix)\\htmlreports\\Bugfix_Regression_Test_Results\\BugfixTestResults.html");
-		File file = new File(ConfigurationFunctions.RESULTSPATH+"QATestResults.html");
-		//SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+		File file = new File(ConfigurationFunctions.RESULTSPATH+"UATTestResults.html");
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss");
 		String nameAppend = sdf.format(file.lastModified());
-		//File archivedFile =  new File("C:\\Users\\rsud\\.jenkins\\jobs\\Regression Suite (Bugfix)\\htmlreports\\Bugfix_Regression_Test_Results\\BugfixTestResults_"+nameAppend+".html");
-		File archivedFile =  new File(ConfigurationFunctions.RESULTSPATH+"QATestResults_"+nameAppend+".html");
+		File archivedFile =  new File(ConfigurationFunctions.RESULTSPATH+"UATTestResults_"+nameAppend+".html");
 		FileUtils.copyFile(file, archivedFile);
-		System.out.println("Previous results are stored as QATestResults_"+nameAppend+".html");
+		System.out.println("Previous results are stored as UATTestResults_"+nameAppend+".html");
     }
 }

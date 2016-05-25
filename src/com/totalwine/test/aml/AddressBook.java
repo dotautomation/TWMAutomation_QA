@@ -1,6 +1,6 @@
 package com.totalwine.test.aml;
 /*
- **** Account Home
+ **** Address Book
  **** Work flow : 
  *  Click on "Account" > "Sign into your account"  (from the header) or "Account info" > "Account login" in footer section 
  *  In the Sign in popup > Signin using registered email and Password.
@@ -22,14 +22,15 @@ package com.totalwine.test.aml;
  * 		Quit WebDriver
  */
 
-import org.testng.Assert;
-import org.testng.annotations.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
-import com.relevantcodes.extentreports.LogStatus;
-import com.totalwine.test.actions.Checkout;
+import org.testng.annotations.Test;
 import com.totalwine.test.config.ConfigurationFunctions;
 import com.totalwine.test.trials.Browser;
+import com.relevantcodes.extentreports.LogStatus;
+import com.totalwine.test.actions.*;
 import com.totalwine.test.pages.*;
 
 public class AddressBook extends Browser {
@@ -43,7 +44,7 @@ public class AddressBook extends Browser {
 	
 	@Test
 	public void AddressBookTest() throws InterruptedException {
-		logger=report.startTest("AML - Registered users Account Home ( Dashboard) verification. ");
+		logger=report.startTest("AML - Registered users Address Book verification. ");
 		driver.get(ConfigurationFunctions.locationSet+IP);
 		Thread.sleep(5000);
 		//** By Passing Age Gate and Welcome Modal
@@ -61,28 +62,29 @@ public class AddressBook extends Browser {
 	    driver.findElement(PageSignInModal.ModalPassword).clear();
 	    driver.findElement(PageSignInModal.ModalPassword).sendKeys("grapes123");
 	    driver.findElement(PageSignInModal.ModalSigninButton).click();
-	    Thread.sleep(6000);
+	    Thread.sleep(8000);
 	    
-	    //**Check for presence of merge cart modal
-	    if (driver.findElements(By.cssSelector("button.btn.btn-red.cartMergeBtn")).size()!=0) {
-	    	driver.findElement(By.cssSelector("button.btn.btn-red.cartMergeBtn")).click();
-	    	Thread.sleep(2000);
-	    }
+	    //**Checking for presence of merge cart modal
+	    ShoppingList.MergeCartModal(driver);
 	    
 	    //**Navigate to the User Address book link
 	    driver.findElement(PageAccountHome.AddressBook).click();  
 	    
 	    //** Editing and verifying "Profile Address" 
-	    driver.findElement(PageAccountHome.EditProfileAddress).click();
+	    JavascriptExecutor js1 = (JavascriptExecutor)driver;  // Finding out elements that are out of site
+	    js1.executeScript("arguments[0].click();", driver.findElement(PageAccountHome.EditProfileAddress)); 
+//	    driver.findElement(PageAccountHome.EditProfileAddress).click();
 	    Assert.assertEquals(driver.findElements(PageAccountHome.EditProfileAddress).isEmpty(),false,"Verifying Editing of the Profile");
 	    Thread.sleep(6000);
-	    driver.findElement(PageAccountHome.EditAddressClose).click();
+	    JavascriptExecutor js2 = (JavascriptExecutor)driver;  // Finding out elements that are out of site
+	    js2.executeScript("arguments[0].click();", driver.findElement(PageAccountHome.EditAddressClose));
 	    Assert.assertEquals(driver.findElements(PageAccountHome.EditAddressClose).isEmpty(),false,"Verifying Editing Popup Closing");
 	    Thread.sleep(5000);
 	    logger.log(LogStatus.PASS, "verifying Profile Address");
 	    	    
 	    //** Adding and verifying "New Address" insertion 
-	    driver.findElement(PageAccountHome.AddNewAddress).click();
+	    JavascriptExecutor js3 = (JavascriptExecutor)driver;  // Finding out elements that are out of site
+	    js3.executeScript("arguments[0].click();", driver.findElement(PageAccountHome.AddNewAddress)); 
 	    Assert.assertEquals(driver.findElements(PageAccountHome.AddNewAddress).isEmpty(),false,"Verifying Adding new address");
 	    Thread.sleep(5000);
 	    driver.findElement(PageAccountHome.AddAddressClose).click();

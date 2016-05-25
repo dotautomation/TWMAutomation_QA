@@ -71,7 +71,7 @@ public class MobileShipCheckout extends Browser {
 		driver.findElement(By.cssSelector("input.anZipForm")).click();
 		Thread.sleep(5000);
 		new Select(driver.findElement(By.id("deliveryModeSelect"))).selectByVisibleText("Overnight");
-		Thread.sleep(3000);
+		Thread.sleep(6000);
 		
 		//Initiate Checkout
 		 // Shopping Cart

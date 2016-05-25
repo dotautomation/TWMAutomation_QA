@@ -15,9 +15,11 @@ public class PageGlobal {
 	public static final By TopNavClassesEvents = By.cssSelector("a.analyticsHeaderLink[href*=\"/events/\"]");
 	public static final By TopNavGuidesAdvice = By.cssSelector("a[href*=\"/guides-and-advice\"]");
 	public static final By TopNavFindStore = By.cssSelector("a.analyticsHeaderLink[href*=\"/store-finder\"]");
-	public static final By TopNavAccount = By.cssSelector("a[data-modal-id=loggedin-not-wrapper]");
+	public static final By TopNavAccount = By.cssSelector("div.top-header-wrapper > div.header-wrapper > ul:nth-child(3) > li:nth-child(2) > a > span.list-text");
 	public static final By TopNavAccountLoggedin = By.cssSelector("a.analyticsHeaderLink[data-modal-id=loggedin-wrapper]");
 	public static final By TopNavShoppingList = By.cssSelector("a.analyticsHeaderLink[href*=\"/shoppinglist\"]");
+	public static final By StoreSelection = By.cssSelector("span.store-details-store-name.flyover-src");
+	public static final By MiniCart = By.cssSelector("div.search-right-cont-add-to-cart.analyticsViewCart");
 	
 	//Search Bar
 	
@@ -36,10 +38,6 @@ public class PageGlobal {
 	public static final By Instagram = By.cssSelector("#footer-customer_services > div.social-icons > div > a:nth-child(8)");
 	public static final By Blog = By.cssSelector("#footer-customer_services > div.social-icons > div > a:nth-child(9)");
 	
-	
-	
-	
-	
 
 	//Location Intercept
 	public static final By LocationInterceptNo = By.cssSelector("div.ChooseStoreButtons > button.btn.btn-gray");
@@ -47,8 +45,10 @@ public class PageGlobal {
 	//Account Management
 	
 	//Not logged in
-	public static final By SignUp = By.cssSelector(".btn.btn-red.analyticsSignUp");
-	public static final By SignInto = By.cssSelector("a.btn.btn-red.acc-link.analyticsSignIn");
+//	public static final By SignUp = By.cssSelector("#sign-in-overlay > div.login-description > div > div.left-content > p > a");
+	public static final By SignUp = By.cssSelector(".btn.btn-red.analyticsGetStarted.post-links.post-links-bv");
+//	public static final By SignInto = By.cssSelector("a.btn.btn-red.acc-link.analyticsSignIn");
+	public static final By SignInto = By.cssSelector("div.top-header-wrapper > div.header-wrapper > ul:nth-child(3) > li:nth-child(2) > a > span.list-text");
 	
 	//Logged in
 	public static final By LogOut = By.cssSelector("a.analyticsHeaderLink[href*=\"/logout\"]");

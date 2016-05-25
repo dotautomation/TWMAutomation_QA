@@ -23,6 +23,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import com.totalwine.test.actions.SiteAccess;
 import com.totalwine.test.config.ConfigurationFunctions;
 import com.totalwine.test.trials.Browser;
 
@@ -38,16 +39,11 @@ public class SLSearch extends Browser {
 	
 	@Test //Search by City
 	public void SLCitySearchTest () throws InterruptedException {
+		logger=report.startTest("SL: Search Stores by City Test");
 		//Access the site using the remoteTestIPAddress URL parameter for all test IPs
-		logger=report.startTest("Store Locator: City Search Test");
 		String [] CitySearch = {"las vegas","orlando","phoenix","laurel md","fort myers"};
 		String [] ClosestStores = {"Las Vegas (Summerlin)","Orlando (Colonial Plaza)","Phoenix (Camelback)","Laurel (Corridor)","Fort Myers"};
-		driver.get(ConfigurationFunctions.locationSet+IP);
-		Thread.sleep(5000);
-		driver.findElement(By.id("btnYes")).click();
-		Thread.sleep(5000);
-		driver.findElement(By.cssSelector("#email-signup-overlay-new-site > div.modal-dialog > div.modal-content > div.modal-body > p.close > a.btn-close")).click();
-		Thread.sleep(5000);
+		SiteAccess.ActionAccessSite(driver, IP);
 		
 		 //Navigate to the Store Locator page
 	    driver.findElement(By.cssSelector(StoreLink)).click();
@@ -73,16 +69,11 @@ public class SLSearch extends Browser {
 		
 	@Test //Search by State
 	public void SLStateSearchTest () throws InterruptedException {
-		logger=report.startTest("Store Locator: State Search Test");
+		logger=report.startTest("SL: Search stores by State Test");
 		String [] ZipSearch = {"95630","33186"};
 		String [] ClosestStores = {"Folsom","Kendall"};
 		//Access the site using the remoteTestIPAddress URL parameter for all test IPs
-		driver.get(ConfigurationFunctions.locationSet+IP);
-		Thread.sleep(5000);
-		driver.findElement(By.id("btnYes")).click();
-		Thread.sleep(5000);
-		driver.findElement(By.cssSelector("#email-signup-overlay-new-site > div.modal-dialog > div.modal-content > div.modal-body > p.close > a.btn-close")).click();
-		Thread.sleep(5000);
+		SiteAccess.ActionAccessSite(driver, IP);
 		
 		 //Navigate to the Store Locator page
 	    driver.findElement(By.cssSelector(StoreLink)).click();
@@ -104,16 +95,11 @@ public class SLSearch extends Browser {
 	
 	@Test //Search by Zip
 	public void SLZipSearchTest () throws InterruptedException {
-		logger=report.startTest("Store Locator: Zip Search Test");
+		logger=report.startTest("SL: Search stores by Zip Test");
 		String [] StateSearch = {"delaware"};
 		String [] ClosestStores = {"Wilmington"};
 		//Access the site using the remoteTestIPAddress URL parameter for all test IPs
-		driver.get(ConfigurationFunctions.locationSet+IP);
-		Thread.sleep(5000);
-		driver.findElement(By.id("btnYes")).click();
-		Thread.sleep(5000);
-		driver.findElement(By.cssSelector("#email-signup-overlay-new-site > div.modal-dialog > div.modal-content > div.modal-body > p.close > a.btn-close")).click();
-		Thread.sleep(5000);
+		SiteAccess.ActionAccessSite(driver, IP);
 		
 		 //Navigate to the Store Locator page
 	    driver.findElement(By.cssSelector(StoreLink)).click();

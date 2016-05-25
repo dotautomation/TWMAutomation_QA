@@ -31,13 +31,18 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import com.totalwine.test.actions.Checkout;
+import com.totalwine.test.actions.SiteAccess;
 import com.totalwine.test.config.ConfigurationFunctions;
 import com.totalwine.test.trials.Browser;
 
 public class Pricing extends Browser {
 
-	//private String IP="98.169.134.0";
-	private String IP="74.96.91.139";
+	//private WebDriver driver;
+	private String IP="98.169.134.0";
+	private String FutureEvent = "/events/apr-2016/virginia/mclean?storestatename=214,203,202,201,205";
+	//ProfilesIni profile = new ProfilesIni();
+	//FirefoxProfile testProfile = profile.getProfile("WebDriver");
 
 	@BeforeMethod
 	  public void setUp() throws Exception {
@@ -47,12 +52,13 @@ public class Pricing extends Browser {
 	@Test 
 	public void PricingTest () throws InterruptedException, BiffException, IOException, AWTException {
 		logger=report.startTest("Pricing Test");
-		driver.get(ConfigurationFunctions.locationSet+IP);
-		Thread.sleep(5000);
-		driver.findElement(By.id("btnYes")).click();
-		Thread.sleep(5000);
-	    driver.findElement(By.cssSelector("#email-signup-overlay-new-site > div.modal-dialog > div.modal-content > div.modal-body > p.close > a.btn-close")).click();
-	    Thread.sleep(5000);
+		
+		driver.get(ConfigurationFunctions.locationSet + IP);
+		PageLoad(driver); // Will not trigger the next control until loading the page
+
+		//** By Passing Age Gate and Welcome Modal
+		Checkout.AgeGateWelcome(driver);
+		PageLoad(driver); // Will not trigger the next control until loading the page
 	    
 	    Actions action=new Actions(driver);
 		JavascriptExecutor js = (JavascriptExecutor)driver;
@@ -66,8 +72,8 @@ public class Pricing extends Browser {
 		WebElement wineMove = driver.findElement(By.cssSelector("ul.header-classes")); //Moving the mouse away from the top level menu 
 		action.moveToElement(wineMove).build().perform(); 
 		Thread.sleep(2000);
-		driver.findElement(By.cssSelector("a.btn.btn-red.clpviewall")).click();
-		Thread.sleep(3000);
+		//driver.findElement(By.xpath("//a[contains(@href,'000002?viewall=true')]")).click(); //For production since the SubCat Land page is setup
+		//Thread.sleep(5000);
 		
 		//Validate Pricing on PLP
 		String plpPrice = driver.findElement(By.cssSelector("span.price")).getText();
@@ -87,17 +93,12 @@ public class Pricing extends Browser {
 		Thread.sleep(2000);
 		driver.findElement(By.xpath("//a[contains(@href,'000002?viewall=true')]")).click(); //For production since the SubCat Land page is setup
 		Thread.sleep(5000);
-		//driver.findElement(By.cssSelector("btn.btn-red.mini-cart-popup-plp.anAddToCartInit")).click();
-		
 		String atcInterPrice = driver.findElement(By.cssSelector("span.price-style-mid")).getText();
 		driver.findElement(By.cssSelector("section.pdp-tab-overview-type > span.pdp-emailmodal-emailwrapper-emailclose")).click();*/
-		
-		//Add to cart, navigate to cart and validate pricing in Cart
-		//String productId = driver.findElement(By.cssSelector("div.anProductId")).getText();
 	    driver.findElement(By.xpath("(//button[@id='"+productId+"'])[2]")).click(); //Clicking the ATC button
 	    Thread.sleep (2000);
 	    driver.get(ConfigurationFunctions.accessURL+"/cart");
-	    Thread.sleep(3000);
+	    Thread.sleep(5000);
 	    String cartUnitPrice = driver.findElement(By.cssSelector("span.price-text")).getText();
 	    String cartTotalPrice = driver.findElement(By.cssSelector("span.price-text.item-total")).getText();
 	    String cartTotalinclTax = driver.findElement(By.id("estimTotal")).getText();
@@ -105,15 +106,18 @@ public class Pricing extends Browser {
 		//Navigate to ELP
 	    driver.findElement(By.linkText("Classes & Events")).click();
 	    Thread.sleep(3000);
+	    
+	    // **  Selecting future events from PDP
+		driver.get(ConfigurationFunctions.accessURL+FutureEvent);
+		Thread.sleep(3000);
+	    
 	    String elpPrice = driver.findElement(By.cssSelector("span.price")).getText();
 	    		
 		//Click through to first available EDP and validate pricing match on EDP against ELP
 	    driver.findElement(By.cssSelector("a.analyticsEventName")).click();
 	    Thread.sleep(3000);
 	    String edpPrice = driver.findElement(By.cssSelector("section.store-right-hours-tasting > div.search-result-list-buy-ctrls > div.search-product-buy-price > span.price")).getText();
-	    
-	    System.out.println("PLP Price: "+plpPrice+"\n"+"PDP Price: "+pdpPrice+"\n"+"Cart Unit Price: "+cartUnitPrice+"\n"+"Cart Total Price: "+cartTotalPrice+"\n"+"Cart Total Incl. Taxes Price: "+cartTotalinclTax);
-	    //Assert.assertTrue(plpPrice.equals(pdpPrice)&&pdpPrice.equals(cartUnitPrice)&&cartUnitPrice.equals("$ "+cartTotalPrice));
+	    //System.out.println("PLP Price: "+plpPrice+"\n"+"ATC Interstitial Price: "+atcInterPrice+"\n"+"PDP Price: "+pdpPrice+"\n"+"Cart Unit Price: "+cartUnitPrice+"\n"+"Cart Total Price: "+"\n"+cartTotalPrice+"Cart Total Incl. Taxes Price: "+cartTotalinclTax+"\n"+"ELP Price: "+"\n"+elpPrice+"EDP Price: "+edpPrice);
 	    System.out.println("PLP Price: "+plpPrice+"\n"+"PDP Price: "+pdpPrice+"\n"+"Cart Unit Price: "+cartUnitPrice+"\n"+"Cart Total Price: "+cartTotalPrice+"\n"+"Cart Total Incl. Taxes Price: "+cartTotalinclTax+"\n"+"ELP Price: "+elpPrice+"\n"+"EDP Price: "+edpPrice);
 	    Assert.assertTrue(plpPrice.equals(pdpPrice),"PLP price is not the same as PDP price");
 	    Assert.assertTrue(pdpPrice.equals(cartUnitPrice),"PDP price is not the same as unit price in cart");
